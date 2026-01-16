@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets.js";
-import "./navbar.css";
+import "./NavBar.css";
 function NavBar() {
   const [showDropDown, setShowDropDown] = React.useState(false);
   const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
