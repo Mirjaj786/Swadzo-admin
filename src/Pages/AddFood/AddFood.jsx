@@ -5,7 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function AddFood() {
-  const url = import.meta.env.VITE_API_URL;
+  const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [image, setImage] = useState(false);
   const [data, setData] = useState({
     name: "",
@@ -32,7 +32,7 @@ function AddFood() {
     formData.append("image", image);
 
     const token = localStorage.getItem("token");
-    const res = await axios.post(`${url}/food/new`, formData, {
+    const res = await axios.post(`${VITE_BACKEND_URL}/food/new`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         token: token,
@@ -92,7 +92,7 @@ function AddFood() {
             value={data.resturant}
             type="text"
             name="resturant"
-            placeholder="resturant name/hotel name"
+            placeholder="Resturant name / Hotel name"
             required
           />
         </div>
