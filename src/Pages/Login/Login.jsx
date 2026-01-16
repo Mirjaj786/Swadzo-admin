@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Login = ({ url, setToken }) => {
+    const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL;
     const [data, setData] = useState({
         email: "",
         password: ""
@@ -61,7 +62,7 @@ const Login = ({ url, setToken }) => {
                 <button type='submit' disabled={loading}>
                     {loading ? "Login..." : "Login"}
                 </button>
-                <p> <Link to="http://localhost:5173/">Go toHome</Link></p>
+                <p> <Link to={FRONTEND_URL}>Go toHome</Link></p>
             </form>
         </div>
     )
