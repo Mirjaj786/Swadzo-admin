@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets.js";
 import "./navbar.css";
 function NavBar() {
   const [showDropDown, setShowDropDown] = React.useState(false);
-  const frontendUrl = "http://localhost:5173";
+  const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
 
   const logout = () => {
 
