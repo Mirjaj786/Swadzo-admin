@@ -72,7 +72,7 @@ function ListFood({ url }) {
           <div key={food._id || index} className="food-list-table-format">
             <img
               className="food-image"
-              src={`${url}/images/${food.image}`}
+              src={food.image.includes("http") ? food.image : `${url}/images/${food.image}`}
               alt={food.name}
             />
             <p>{food.name}</p>
