@@ -15,6 +15,8 @@ function AddFood() {
     category: "All",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -23,6 +25,7 @@ function AddFood() {
 
   const onSubmiitHandler = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("resturant", data.resturant);
@@ -32,25 +35,32 @@ function AddFood() {
     formData.append("image", image);
 
     const token = localStorage.getItem("token");
-    const res = await axios.post(`${VITE_BACKEND_URL}/food/new`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        token: token,
-      },
-    });
-
-    if (res.data.success) {
-      setData({
-        name: "",
-        resturant: "",
-        description: "",
-        price: "",
-        category: "All",
+    try {
+      const res = await axios.post(`${VITE_BACKEND_URL}/food/new`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          token: token,
+        },
       });
-      setImage(false);
-      toast.success(res.data.message);
-    } else {
-      toast.error(res.data.message);
+
+      if (res.data.success) {
+        setData({
+          name: "",
+          resturant: "",
+          description: "",
+          price: "",
+          category: "All",
+        });
+        setImage(false);
+        toast.success(res.data.message);
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Error adding food");
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -140,8 +150,8 @@ function AddFood() {
             />
           </div>
         </div>
-        <button type="submit" className="add-btn">
-          Add Food
+        <button type="submit" className="add-btn" disabled={isLoading}>
+          {isLoading ? "Food Adding..." : "Add Food"}
         </button>
       </form>
     </div>
