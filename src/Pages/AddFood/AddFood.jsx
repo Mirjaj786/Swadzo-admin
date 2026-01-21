@@ -119,7 +119,7 @@ function AddFood() {
             required
           ></textarea>
         </div>
-
+        {/* select category */}
         <div className="category-price">
           <div className="category flex-col">
             <p>Product Category</p>
@@ -127,9 +127,9 @@ function AddFood() {
               <option value="Select Category?">Select..</option>
               <option value="All">All</option>
               <option value="Salad">Salad</option>
-              <option value="RollsDeserts">Rolls</option>
+              <option value="Rolls">Rolls</option>
               <option value="Deserts">Deserts</option>
-              <option value="SandwichCake">Sandwich</option>
+              <option value="Sandwich">Sandwich</option>
               <option value="Cake">Cake</option>
               <option value="Pure Veg">Pure Veg</option>
               <option value="Non Veg">Non Veg</option>
