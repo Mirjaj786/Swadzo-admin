@@ -162,3 +162,7 @@ This project is licensed under the [ISC License](https://opensource.org/licenses
 ---
 
 *Part of the **Swadzo Food Delivery Ecosystem**.*
+
+<div align="center">
+  <sub>Built with ❤️ by Mirjaj Ajij Milon</sub>
+</div>
